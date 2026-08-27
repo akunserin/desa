@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desa Matang Labong</title>
+
+    <!-- FONT -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <!-- ICON -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        /* =========================
+           DASAR
+        ========================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: #f5f8f3;
+            color: #193025;
+            line-height: 1.7;
+            transition: .3s;
+        }
+
+        body.dark {
+            background: #0d1812;
+            color: #f2f7f3;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 12px 5%;
+            transition: .3s;
+        }
+
+        header.scrolled {
+            background: rgba(255, 255, 255, .95);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, .08);
+        }
+
+        body.dark header.scrolled {
+            background: rgba(18, 35, 25, .95);
+        }
+
+        .navbar {
+            max-width: 1150px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #175b3b;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        body.dark .logo {
+            color: #9ed477;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #175b3b;
+            color: white;
+            border-radius: 50%;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 5px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #193025;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 9px 14px;
+            border-radius: 25px;
+            transition: .3s;
+        }
+
+        body.dark .nav-links a {
+            color: #f2f7f3;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: #175b3b;
+            color: white;
+        }
+
+        .menu-btn,
+        .theme-btn {
+            width: 42px;
+            height: 42px;
+            border: 0;
+            border-radius: 50%;
+            background: #e9f1e8;
+            color: #175b3b;
+            cursor: pointer;
+            font-size: 17px;
+        }
+
+        .mobile-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .menu-btn {
+            display: none;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 130px 7% 80px;
+            background: 
+                linear-gradient(
+                    90deg,
+                    rgba(5, 40, 23, .9),
+                    rgba(9, 66, 38, .55),
+                    rgba(0, 0, 0, .2)
+                ),
+                url("sawah.jpg.jpg") center/cover no-repeat;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 750px;
+        }
+
+        .hero-label {
+            display: inline-block;
+            padding: 8px 15px;
+            border: 1px solid rgba(255, 255, 255, .4);
+            border-radius: 30px;
+            background: rgba(255, 255, 255, .12);
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(42px, 7vw, 75px);
+            line-height: 1.05;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #b7dd7c;
+        }
+
+        .hero p {
+            max-width: 650px;
+            font-size: 17px;
+            color: #e7f1e9;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 13px 22px;
+            background: #28784d;
+            color: white;
+            border-radius: 30px;
+            font-weight: 700;
+            transition: .3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            background: #3d9464;
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, .1);
+            border: 1px solid white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: #175b3b;
+        }
+
+        /* =========================
+           STATISTIK
+        ========================= */
+        .stats {
+            margin-top: -60px;
+            position: relative;
+            z-index: 10;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .stat {
+            background: white;
+            padding: 25px 15px;
+            text-align: center;
+            border-radius: 20px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, .1);
+            transition: .3s;
+        }
+
+        body.dark .stat {
+            background: #17291e;
+        }
+
+        .stat:hover {
+            transform: translateY(-7px);
+        }
+
+        .stat i {
+            font-size: 28px;
+            color: #28784d;
+            margin-bottom: 10px;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 30px;
+            font-weight: bold;
+            color: #175b3b;
+        }
+
+        body.dark .stat-number {
+            color: #b7dd7c;
+        }
+
+        .stat p {
+            color: #718078;
+            font-size: 14px;
+        }
+
+        /* =========================
+           SECTION
+        ========================= */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-label {
+            color: #28784d;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        .section-text {
+            color: #68766d;
+            max-width: 650px;
+        }
+
+        body.dark .section-text {
+            color: #b6c5ba;
+        }
+
+        /* =========================
+           PROFIL
+        ========================= */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 55px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            height: 480px;
+            object-fit: cover;
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, .15);
+        }
+
+        .about-badge {
+            position: absolute;
+            right: -20px;
+            bottom: 25px;
+            padding: 18px 22px;
+            background: #175b3b;
+            color: white;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
+        }
+
+        .about-badge strong {
+            display: block;
+            font-size: 25px;
+            color: #b7dd7c;
+        }
+
+        .about-list {
+            margin-top: 25px;
+            list-style: none;
+        }
+
+        .about-list li {
+            display: flex;
+            gap: 12px;
+            margin: 14px 0;
+        }
+
+        .about-list i {
+            color: #28784d;
+            margin-top: 5px;
+        }
+
+        /* =========================
+           LABONG AYU
+        ========================= */
+        .labong-section {
+            background: #eaf3e8;
+        }
+
+        body.dark .labong-section {
+            background: #14241a;
+        }
+
+        .labong {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .labong-card {
+            background: white;
+            padding: 35px;
+            border-radius: 28px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, .08);
+        }
+
+        body.dark .labong-card {
+            background: #1a2d20;
+        }
+
+        .labong-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 35px;
+            color: #175b3b;
+            margin-bottom: 15px;
+        }
+
+        body.dark .labong-card h3 {
+            color: #b7dd7c;
+        }
+
+        .labong-card p {
+            color: #68766d;
+        }
+
+        body.dark .labong-card p {
+            color: #c1cdc4;
+        }
+
+        .highlight {
+            margin-top: 22px;
+            padding: 18px;
+            border-left: 5px solid #28784d;
+            background: #edf5eb;
+            border-radius: 12px;
+        }
+
+        body.dark .highlight {
+            background: #20372a;
+        }
+
+        .labong-facts {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .fact {
+            background: #edf5eb;
+            padding: 18px;
+            border-radius: 15px;
+        }
+
+        body.dark .fact {
+            background: #20372a;
+        }
+
+        .fact i {
+            color: #28784d;
+            font-size: 20px;
+        }
+
+        .fact strong {
+            display: block;
+            color: #175b3b;
+            font-size: 21px;
+        }
+
+        body.dark .fact strong {
+            color: #b7dd7c;
+        }
+
+        .labong-image {
+            overflow: hidden;
+            border-radius: 28px;
+        }
+
+        .labong-image img {
+            height: 100%;
+            min-height: 430px;
+            object-fit: cover;
+            transition: .5s;
+        }
+
+        .labong-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* =========================
+           POTENSI
+        ========================= */
+        .potensi-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .potensi-card {
+            background: white;
+            padding: 30px;
+            border-radius: 22px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .07);
+            transition: .3s;
+        }
+
+        body.dark .potensi-card {
+            background: #17291e;
+        }
+
+        .potensi-card:hover {
+            transform: translateY(-7px);
+        }
+
+        .potensi-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #eaf3e8;
+            color: #28784d;
+            border-radius: 18px;
+            font-size: 25px;
+            margin-bottom: 18px;
+        }
+
+        body.dark .potensi-icon {
+            background: #20372a;
+        }
+
+        .potensi-card h3 {
+            color: #175b3b;
+            margin-bottom: 8px;
+        }
+
+        body.dark .potensi-card h3 {
+            color: #b7dd7c;
+        }
+
+        .potensi-card p {
+            color: #68766d;
+            font-size: 14px;
+        }
+
+        body.dark .potensi-card p {
+            color: #b8c7bd;
+        }
+
+        /* =========================
+           GALERI
+        ========================= */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-top: 40px;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+
+        .gallery-item.big {
+            grid-column: span 2;
+        }
+
+        .gallery-item img {
+            height: 100%;
+            object-fit: cover;
+            transition: .5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-info {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 30px 20px 20px;
+            color: white;
+            background: linear-gradient(
+                transparent,
+                rgba(0, 0, 0, .85)
+            );
+        }
+
+        .gallery-info h3 {
+            font-size: 18px;
+        }
+
+        .gallery-info p {
+            font-size: 13px;
+        }
+
+        /* =========================
+           MODAL FOTO
+        ========================= */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            inset: 0;
+            background: rgba(0, 0, 0, .85);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal img {
+            max-width: 900px;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 15px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            color: white;
+            font-size: 35px;
+            cursor: pointer;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+        footer {
+            background: #0c2c1e;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .footer-bottom {
+            color: #b7c9bc;
+            font-size: 13px;
+        }
+
+        /* =========================
+           RESPONSIVE HP
+        ========================= */
+        @media (max-width: 900px) {
+            .nav-links {
+                position: absolute;
+                top: 65px;
+                left: 5%;
+                right: 5%;
+                background: white;
+                padding: 12px;
+                border-radius: 20px;
+                box-shadow: 0 15px 35px rgba(0, 0, 0, .12);
+                display: none;
+                flex-direction: column;
+            }
+
+            body.dark .nav-links {
+                background: #17291e;
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .nav-links a {
+                display: block;
+                text-align: center;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .stats {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .about,
+            .labong {
+                grid-template-columns: 1fr;
+            }
+
+            .potensi-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .labong-image img {
+                min-height: 350px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero {
+                padding: 120px 6% 70px;
+            }
+
+            .hero h1 {
+                font-size: 43px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            section {
+                padding: 75px 0;
+            }
+
+            .section-title {
+                font-size: 34px;
+            }
+
+            .stats {
+                width: 90%;
+                margin-left: auto;
+                margin-right: auto;
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .stat {
+                padding: 20px 10px;
+            }
+
+            .stat-number {
+                font-size: 24px;
+            }
+
+            .about-image img {
+                height: 350px;
+            }
+
+            .about-badge {
+                right: 10px;
+            }
+
+            .labong-facts {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .potensi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item.big {
+                grid-column: span 1;
+            }
+
+            .gallery-item {
+                height: 270px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- =========================
+     NAVBAR
+========================= -->
+<header id="header">
+    <nav class="navbar">
+        <a href="#home" class="logo">
+            <span class="logo-icon">
+                <i class="fa-solid fa-leaf"></i>
+            </span>
+            Matang Labong
+        </a>
+
+        <ul class="nav-links" id="navLinks">
+            <li>
+                <a href="#home" class="active">Beranda</a>
+            </li>
+            <li>
+                <a href="#profil">Profil</a>
+            </li>
+            <li>
+                <a href="#labong">Labong Ayu</a>
+            </li>
+            <li>
+                <a href="#potensi">Potensi</a>
+            </li>
+            <li>
+                <a href="#galeri">Galeri</a>
+            </li>
+        </ul>
+
+        <div class="mobile-buttons">
+            <button class="theme-btn" id="themeBtn" type="button">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+            <button class="menu-btn" id="menuBtn" type="button">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+</header>
+
+<!-- =========================
+     HERO
+========================= -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <div class="hero-label">
+            <i class="fa-solid fa-location-dot"></i>
+            Kecamatan Tebas · Kabupaten Sambas
+        </div>
+        <h1>
+            Selamat Datang di
+            <span>Matang Labong</span>
+        </h1>
+        <p>
+            Mengenal lebih dekat keindahan alam,
+            kehidupan masyarakat, potensi pertanian,
+            serta Dusun Labong Ayu di Desa Matang Labong,
+            Kecamatan Tebas, Kabupaten Sambas.
+        </p>
+        <div class="buttons">
+            <a href="#profil" class="btn">
+                Jelajahi Desa
+                <i class="fa-solid fa-arrow-down"></i>
+            </a>
+            <a href="#labong" class="btn btn-outline">
+                <i class="fa-solid fa-map-location-dot"></i>
+                Kenali Labong Ayu
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- =========================
+     STATISTIK
+========================= -->
+<div class="container">
+    <div class="stats">
+        <div class="stat">
+            <i class="fa-solid fa-users"></i>
+            <div class="stat-number">4.101</div>
+            <p>Total Penduduk</p>
+        </div>
+        <div class="stat">
+            <i class="fa-solid fa-person"></i>
+            <div class="stat-number">2.113</div>
+            <p>Laki-Laki</p>
+        </div>
+        <div class="stat">
+            <i class="fa-solid fa-person-dress"></i>
+            <div class="stat-number">1.988</div>
+            <p>Perempuan</p>
+        </div>
+        <div class="stat">
+            <i class="fa-solid fa-house"></i>
+            <div class="stat-number">15</div>
+            <p>Wilayah Dusun</p>
+        </div>
+    </div>
+</div>
+
+<!-- =========================
+     PROFIL
+========================= -->
+<section id="profil">
+    <div class="container">
+        <div class="about">
+            <div class="about-image">
+                <img src="susana.jpg.jpg" alt="Suasana Desa Matang Labong">
+                <div class="about-badge">
+                    <strong>Matang Labong</strong>
+                    Desa di Kecamatan Tebas
+                </div>
+            </div>
+            <div>
+                <div class="section-label">Tentang Desa</div>
+                <h2 class="section-title">Desa yang asri dan penuh potensi</h2>
+                <p class="section-text">
+                    Desa Matang Labong merupakan desa yang berada
+                    di Kecamatan Tebas, Kabupaten Sambas,
+                    Kalimantan Barat. Lingkungan pedesaan yang
+                    hijau serta aktivitas masyarakat yang dekat
+                    dengan sektor pertanian menjadi bagian dari
+                    kehidupan desa.
+                </p>
+                <ul class="about-list">
+                    <li>
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>Berada di Kecamatan Tebas, Kabupaten Sambas.</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>Memiliki beberapa wilayah dusun, salah satunya Dusun Labong Ayu.</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>Kehidupan masyarakat erat dengan pertanian dan lingkungan pedesaan.</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>Semangat kebersamaan dan gotong royong menjadi bagian masyarakat.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =========================
+     LABONG AYU
+========================= -->
+<section class="labong-section" id="labong">
+    <div class="container">
+        <div class="section-label">Dusun Labong Ayu</div>
+        <h2 class="section-title">Mengenal Dusun Labong Ayu</h2>
+        <p class="section-text">
+            Salah satu dusun yang berada di Desa Matang Labong,
+            Kecamatan Tebas, Kabupaten Sambas.
+        </p>
+        <div class="labong" style="margin-top:40px;">
+            <div class="labong-card">
+                <h3>Labong Ayu</h3>
+                <p>
+                    Dusun Labong Ayu merupakan salah satu bagian
+                    wilayah Desa Matang Labong. Masyarakat di
+                    wilayah ini menjalani kehidupan pedesaan yang
+                    erat dengan lingkungan sekitar dan kegiatan
+                    pertanian.
+                </p>
+                <div class="highlight">
+                    <strong>🌾 Potensi Pertanian</strong>
+                    <p style="margin-top:5px;">
+                        Pertanian menjadi salah satu potensi penting
+                        yang dapat dikembangkan untuk mendukung
+                        perekonomian masyarakat.
+                    </p>
+                </div>
+                <div class="labong-facts">
+                    <div class="fact">
+                        <i class="fa-solid fa-users"></i>
+                        <strong>901</strong>
+                        Data penduduk*
+                    </div>
+                    <div class="fact">
+                        <i class="fa-solid fa-house"></i>
+                        <strong>193</strong>
+                        Kepala keluarga*
+                    </div>
+                    <div class="fact">
+                        <i class="fa-solid fa-wheat-awn"></i>
+                        <strong>Pertanian</strong>
+                        Potensi utama
+                    </div>
+                    <div class="fact">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <strong>Tebas</strong>
+                        Kecamatan
+                    </div>
+                </div>
+            
+            </div>
+            <div class="labong-image">
+                <img src="sawah.jpg.jpg" alt="Persawahan Labong Ayu">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =========================
+     POTENSI
+========================= -->
+<section id="potensi">
+    <div class="container">
+        <div class="section-label">Potensi Desa</div>
+        <h2 class="section-title">Potensi Matang Labong</h2>
+        <p class="section-text">
+            Berbagai potensi alam dan masyarakat dapat menjadi
+            kekuatan dalam mendukung perkembangan desa.
+        </p>
+        <div class="potensi-grid">
+            <div class="potensi-card">
+                <div class="potensi-icon">
+                    <i class="fa-solid fa-wheat-awn"></i>
+                </div>
+                <h3>Pertanian Padi</h3>
+                <p>
+                    Hamparan persawahan menjadi salah satu
+                    potensi utama masyarakat Matang Labong.
+                    Pertanian padi menjadi bagian penting
+                    dari kehidupan masyarakat desa.
+                </p>
+            </div>
+            <div class="potensi-card">
+                <div class="potensi-icon">
+                    <i class="fa-solid fa-leaf"></i>
+                </div>
+                <h3>Lingkungan Hijau</h3>
+                <p>
+                    Lingkungan yang masih asri dengan berbagai
+                    vegetasi dan tanaman memberikan suasana
+                    pedesaan yang sejuk dan nyaman.
+                </p>
+            </div>
+            <div class="potensi-card">
+                <div class="potensi-icon">
+                    <i class="fa-solid fa-people-group"></i>
+                </div>
+                <h3>Gotong Royong</h3>
+                <p>
+                    Kebersamaan masyarakat menjadi salah satu
+                    kekuatan desa dalam menjaga lingkungan
+                    dan menjalankan berbagai kegiatan bersama.
+                </p>
+            </div>
+            <div class="potensi-card">
+                <div class="potensi-icon">
+                    <i class="fa-solid fa-house"></i>
+                </div>
+                <h3>Pekarangan Rumah</h3>
+                <p>
+                    Pekarangan rumah masyarakat dapat
+                    dikembangkan menjadi ruang hijau serta
+                    tempat budidaya berbagai tanaman.
+                </p>
+            </div>
+            <div class="potensi-card">
+                <div class="potensi-icon">
+                    <i class="fa-solid fa-seedling"></i>
+                </div>
+                <h3>Tanaman</h3>
+                <p>
+                    Berbagai tanaman yang tumbuh di lingkungan
+                    desa menjadi bagian dari keindahan dan
+                    potensi alam Matang Labong.
+                </p>
+            </div>
+            <div class="potensi-card">
+                <div class="potensi-icon">
+                    <i class="fa-solid fa-mountain-sun"></i>
+                </div>
+                <h3>Keindahan Alam</h3>
+                <p>
+                    Pemandangan sawah, langit terbuka,
+                    dan suasana pedesaan menjadi daya tarik
+                    alami Desa Matang Labong.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =========================
+     GALERI
+========================= -->
+<section id="galeri">
+    <div class="container">
+        <div class="section-label">Galeri Desa</div>
+        <h2 class="section-title">Keindahan Matang Labong</h2>
+        <p class="section-text">
+            Beberapa gambaran suasana alam dan
+            pedesaan Matang Labong.
+        </p>
+        <div class="gallery">
+            <!-- FOTO HAMparan -->
+            <div class="gallery-item big" onclick="openModal(this)">
+                <img src="hamparan.jpg.jpg.jpg" alt="Hamparan Sawah Matang Labong">
+                <div class="gallery-info">
+                    <h3>Hamparan Sawah</h3>
+                    <p>Potensi pertanian desa</p>
+                </div>
+            </div>
+            <!-- FOTO SUASANA -->
+            <div class="gallery-item" onclick="openModal(this)">
+                <img src="susana.jpg.jpg" alt="Suasana Desa Matang Labong">
+                <div class="gallery-info">
+                    <h3>Suasana Desa</h3>
+                    <p>Lingkungan pedesaan Matang Labong</p>
+                </div>
+            </div>
+            <!-- FOTO SAWAH LAMA -->
+            <div class="gallery-item" onclick="openModal(this)">
+                <img src="sawah.jpg.jpg" alt="Sawah Matang Labong">
+                <div class="gallery-info">
+                    <h3>Persawahan Desa</h3>
+                    <p>Pemandangan sawah dan gubuk petani</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MODAL -->
+<div class="modal" id="fotoModal">
+    <span class="close-modal" onclick="closeModal()">&times;</span>
+    <img src="" alt="Foto Besar" id="modalImg">
+</div>
+
+<!-- =========================
+     FOOTER
+========================= -->
+<footer>
+    <div class="footer-bottom">
+        <p>&copy; 2024 Desa Matang Labong. Semua hak dilindungi.</p>
+    </div>
+</footer>
+
+<!-- =========================
+     JAVASCRIPT (TOMBOL BERFUNGSI)
+========================= -->
+<script>
+    // ELEMEN UTAMA
+    const header = document.getElementById('header');
+    const navLinks = document.getElementById('navLinks');
+    const menuBtn = document.getElementById('menuBtn');
+    const themeBtn = document.getElementById('themeBtn');
+    const body = document.body;
+    const navAnchors = document.querySelectorAll('.nav-links a');
+
+    // 1. TOMBOL MENU HP (BUKA/TUTUP NAVIGASI)
+    menuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('show');
+    });
+
+    // Tutup menu saat salah satu link diklik
+    navAnchors.forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 900) {
+                navLinks.classList.remove('show');
+            }
+        });
+    });
+
+    // 2. TOMBOL GELAP / TERANG
+    // Cek preferensi sebelumnya
+    if(localStorage.getItem('theme') === 'dark' || 
+       (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        body.classList.add('dark');
+        themeBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+    }
+
+    themeBtn.addEventListener('click', () => {
+        body.classList.toggle('dark');
+        if(body.classList.contains('dark')) {
+            localStorage.setItem('theme', 'dark');
+            themeBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+        } else {
+            localStorage.setItem('theme', 'light');
+            themeBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+        }
+    });
+
+    // 3. HEADER BERUBAH SAAT DI SCROLL
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+        setActiveLink(); // Panggil fungsi aktif saat discroll
+    });
+
+    // 4. MENANDAI LINK YANG SEDANG DILIHAT (AKTIF)
+    function setActiveLink() {
+        let scrollPos = window.scrollY + 150;
+
+        document.querySelectorAll('section').forEach(section => {
+            const top = section.offsetTop;
+            const height = section.offsetHeight;
+            const id = section.getAttribute('id');
+
+            if (scrollPos >= top && scrollPos < top + height) {
+                navAnchors.forEach(link => {
+                    link.classList.remove('active');
+                    if(link.getAttribute('href') === '#' + id) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }
+
+    // 5. MODAL GALERI
+    function openModal(element) {
+        const imgSrc = element.querySelector('img').getAttribute('src');
+        document.getElementById('modalImg').src = imgSrc;
+        document.getElementById('fotoModal').classList.add('show');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        document.getElementById('fotoModal').classList.remove('show');
+        document.body.style.overflow = 'auto';
+    }
+
+    // Tutup modal jika klik di luar gambar
+    document.getElementById('fotoModal').addEventListener('click', function(e) {
+        if (e.target === this) closeModal();
+    });
+</script>
+
+</body>
+</html>
