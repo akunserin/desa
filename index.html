@@ -1071,6 +1071,22 @@
             pedesaan Matang Labong.
         </p>
         <div class="gallery">
+            <div class="gallery">
+                <div class="gallery-item big" onclick="openModal(this)">
+                <img src="kegiatan.jpg.png" alt="Kegiatan masyarakat">
+                <div class="gallery-info">
+                    <h3>Kegiatan Masyarakat</h3> 
+                    <p>Pemnbagian sembako8</p>
+                </div>
+            </div>
+            <!-- FOTO sekolah -->
+            <div class="gallery-item big" onclick="openModal(this)">
+                <img src="mts.jpg.png" alt="Sekolah Mts Al-hikmah sidang">
+                <div class="gallery-info">
+                    <h3>Mts Al-Hikamah Sidang</h3> 
+                    <p>salah satu sekolah yang berada di desa matang labong</p>
+                </div>
+            </div>
             <!-- FOTO HAMparan -->
             <div class="gallery-item big" onclick="openModal(this)">
                 <img src="hamparan.jpg.jpg.jpg" alt="Hamparan Sawah Matang Labong">
@@ -1098,13 +1114,55 @@
         </div>
     </div>
 </section>
-
+    
 <!-- MODAL -->
 <div class="modal" id="fotoModal">
     <span class="close-modal" onclick="closeModal()">&times;</span>
     <img src="" alt="Foto Besar" id="modalImg">
 </div>
+    
+<!-- TOMBOL WEBSITE RESMI (DI BAWAH GALERI) -->
+<style>
+.tombol-bawah-galeri {
+    text-align: center;
+    padding: 60px 20px 80px;
+    background: #f5f8f3;
+}
 
+body.dark .tombol-bawah-galeri {
+    background: #0d1812;
+}
+
+.tombol-bawah-galeri a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #175b3b;
+    color: white;
+    padding: 16px 32px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 17px;
+    text-decoration: none;
+    transition: 0.3s;
+    box-shadow: 0 6px 18px rgba(23, 91, 59, 0.2);
+}
+
+.tombol-bawah-galeri a:hover {
+    background: #28784d;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(23, 91, 59, 0.3);
+}
+</style>
+
+<section class="tombol-bawah-galeri">
+    <div class="container">
+        <a href="https://matanglabong.tebas.id/" target="_blank" rel="noopener noreferrer">
+            <i class="fa-solid fa-globe"></i>
+            Kunjungi Website Resmi Desa
+        </a>
+    </div>
+</section>  
 <!-- =========================
      FOOTER
 ========================= -->
